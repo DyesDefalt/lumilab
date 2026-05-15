@@ -3,7 +3,7 @@
   "targetUrl": "https://www.adkivo.my.id/",
   "cutoffDate": "2026-05-15",
   "timezone": "Asia/Jakarta",
-  "scanTimestamp": "2026-05-15T14:48:41.335Z",
+  "scanTimestamp": "2026-05-15T16:02:57.914Z",
   "dataDisclosure": "GA4, Search Console, and business signals are mock connector data for MVP. Website crawl is live read-only.",
   "connectorStatus": {
     "websiteCrawler": "live_read_only",
@@ -14,28 +14,28 @@
   },
   "scores": {
     "seo": 100,
-    "aiVisibility": 30,
+    "aiVisibility": 16,
     "technical": 100,
-    "overall": 77
+    "overall": 72
   },
   "issueCounts": {
     "Critical": 0,
     "High": 0,
     "Medium": 1,
-    "Low": 9
+    "Low": 11
   },
   "dailyComparison": {
-    "new": 10,
+    "new": 12,
     "repeated": 0,
     "resolved": 0
   },
   "weeklyTrend": {
     "status": "available",
-    "overallScoreDelta": 5,
-    "direction": "improving",
+    "overallScoreDelta": 0,
+    "direction": "flat",
     "scansCompared": 2
   },
-  "executiveSummary": "LumiLab scanned 10 page(s) for https://www.adkivo.my.id/. Overall health is 77/100. Top priority: Weak answer-readiness / FAQ coverage.",
+  "executiveSummary": "LumiLab scanned 12 page(s) for https://www.adkivo.my.id/. Overall health is 72/100. Top priority: Weak answer-readiness / FAQ coverage.",
   "topIssues": [
     {
       "type": "ai-visibility",
@@ -218,6 +218,30 @@
       "recurrenceFactor": 1,
       "score": 12,
       "priority": "Low"
+    },
+    {
+      "type": "ai-visibility",
+      "title": "Weak answer-readiness / FAQ coverage",
+      "severity": 3,
+      "recommendation": "Add concise FAQ or Q&A sections answering buyer/search intent questions.",
+      "page": "https://www.adkivo.my.id/platform/twitter",
+      "businessValue": 2,
+      "trafficOpportunity": 2,
+      "recurrenceFactor": 1,
+      "score": 12,
+      "priority": "Low"
+    },
+    {
+      "type": "ai-visibility",
+      "title": "Weak answer-readiness / FAQ coverage",
+      "severity": 3,
+      "recommendation": "Add concise FAQ or Q&A sections answering buyer/search intent questions.",
+      "page": "https://www.adkivo.my.id/platform/linkedin",
+      "businessValue": 2,
+      "trafficOpportunity": 2,
+      "recurrenceFactor": 1,
+      "score": 12,
+      "priority": "Low"
     }
   ],
   "developerActionPlan": [
@@ -261,7 +285,7 @@
     {
       "url": "https://www.adkivo.my.id/",
       "statusCode": 200,
-      "responseTimeMs": 147,
+      "responseTimeMs": 210,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -304,7 +328,7 @@
     {
       "url": "https://www.adkivo.my.id/blog",
       "statusCode": 200,
-      "responseTimeMs": 1723,
+      "responseTimeMs": 999,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -345,7 +369,7 @@
     {
       "url": "https://www.adkivo.my.id/about",
       "statusCode": 200,
-      "responseTimeMs": 46,
+      "responseTimeMs": 15,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -390,7 +414,7 @@
     {
       "url": "https://www.adkivo.my.id/contact",
       "statusCode": 200,
-      "responseTimeMs": 37,
+      "responseTimeMs": 18,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -431,7 +455,7 @@
     {
       "url": "https://www.adkivo.my.id/platform/meta",
       "statusCode": 200,
-      "responseTimeMs": 1263,
+      "responseTimeMs": 1019,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -472,7 +496,7 @@
     {
       "url": "https://www.adkivo.my.id/platform/google",
       "statusCode": 200,
-      "responseTimeMs": 1063,
+      "responseTimeMs": 1051,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -513,7 +537,7 @@
     {
       "url": "https://www.adkivo.my.id/platform/tiktok",
       "statusCode": 200,
-      "responseTimeMs": 1414,
+      "responseTimeMs": 790,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -554,7 +578,7 @@
     {
       "url": "https://www.adkivo.my.id/platform/shopee",
       "statusCode": 200,
-      "responseTimeMs": 1433,
+      "responseTimeMs": 790,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -595,7 +619,7 @@
     {
       "url": "https://www.adkivo.my.id/platform/lazada",
       "statusCode": 200,
-      "responseTimeMs": 973,
+      "responseTimeMs": 990,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -636,7 +660,7 @@
     {
       "url": "https://www.adkivo.my.id/platform/dv360",
       "statusCode": 200,
-      "responseTimeMs": 1458,
+      "responseTimeMs": 1016,
       "title": "adkivo - Web Advertising Specs & Command Center",
       "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
       "canonical": "",
@@ -673,11 +697,151 @@
       "trustSignals": true,
       "wordCount": 9443,
       "error": null
+    },
+    {
+      "url": "https://www.adkivo.my.id/platform/twitter",
+      "statusCode": 200,
+      "responseTimeMs": 781,
+      "title": "adkivo - Web Advertising Specs & Command Center",
+      "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
+      "canonical": "",
+      "h1": [
+        "X (Twitter) Ads"
+      ],
+      "h2": [],
+      "imagesTotal": 4,
+      "imagesMissingAlt": 0,
+      "internalLinks": [
+        "https://www.adkivo.my.id/",
+        "https://www.adkivo.my.id/blog",
+        "https://www.adkivo.my.id/about",
+        "https://www.adkivo.my.id/contact",
+        "https://www.adkivo.my.id/platform/meta",
+        "https://www.adkivo.my.id/platform/google",
+        "https://www.adkivo.my.id/platform/tiktok",
+        "https://www.adkivo.my.id/platform/shopee",
+        "https://www.adkivo.my.id/platform/lazada",
+        "https://www.adkivo.my.id/platform/dv360",
+        "https://www.adkivo.my.id/platform/twitter",
+        "https://www.adkivo.my.id/platform/linkedin",
+        "https://www.adkivo.my.id/platform/tokopedia",
+        "https://www.adkivo.my.id/platform/blibli",
+        "https://www.adkivo.my.id/platform/tradedesk",
+        "https://www.adkivo.my.id/platform/chatgpt",
+        "https://www.adkivo.my.id/universal-specs",
+        "https://www.adkivo.my.id/utm-generator",
+        "https://www.adkivo.my.id/team",
+        "https://www.adkivo.my.id/team/ahmad-azzam-fuadie"
+      ],
+      "schemaCount": 4,
+      "hasFaqSignals": false,
+      "trustSignals": true,
+      "wordCount": 9433,
+      "error": null
+    },
+    {
+      "url": "https://www.adkivo.my.id/platform/linkedin",
+      "statusCode": 200,
+      "responseTimeMs": 791,
+      "title": "adkivo - Web Advertising Specs & Command Center",
+      "metaDescription": "Comprehensive specs, creative best practices, and advertising guidelines for modern ad platforms like Meta, Google, TikTok, and API services.",
+      "canonical": "",
+      "h1": [
+        "LinkedIn Ads"
+      ],
+      "h2": [],
+      "imagesTotal": 4,
+      "imagesMissingAlt": 0,
+      "internalLinks": [
+        "https://www.adkivo.my.id/",
+        "https://www.adkivo.my.id/blog",
+        "https://www.adkivo.my.id/about",
+        "https://www.adkivo.my.id/contact",
+        "https://www.adkivo.my.id/platform/meta",
+        "https://www.adkivo.my.id/platform/google",
+        "https://www.adkivo.my.id/platform/tiktok",
+        "https://www.adkivo.my.id/platform/shopee",
+        "https://www.adkivo.my.id/platform/lazada",
+        "https://www.adkivo.my.id/platform/dv360",
+        "https://www.adkivo.my.id/platform/twitter",
+        "https://www.adkivo.my.id/platform/linkedin",
+        "https://www.adkivo.my.id/platform/tokopedia",
+        "https://www.adkivo.my.id/platform/blibli",
+        "https://www.adkivo.my.id/platform/tradedesk",
+        "https://www.adkivo.my.id/platform/chatgpt",
+        "https://www.adkivo.my.id/universal-specs",
+        "https://www.adkivo.my.id/utm-generator",
+        "https://www.adkivo.my.id/team",
+        "https://www.adkivo.my.id/team/ahmad-azzam-fuadie"
+      ],
+      "schemaCount": 4,
+      "hasFaqSignals": false,
+      "trustSignals": true,
+      "wordCount": 9426,
+      "error": null
     }
   ],
   "sourceAudit": {
-    "status": "not_configured",
-    "findings": [],
-    "routes": []
+    "status": "ok",
+    "repoPath": "/root/.openclaw/workspace/read-only-sources/adswift-guide",
+    "findings": [
+      {
+        "severity": "High",
+        "area": "Indexability",
+        "title": "robots.ts fallback sitemap domain does not match live domain",
+        "evidence": "robots.ts falls back to https://adkivo.com while live domain is adkivo.my.id",
+        "userImpact": "Search engines may discover the wrong sitemap URL when NEXT_PUBLIC_SITE_URL is missing or misconfigured.",
+        "techAction": "Set NEXT_PUBLIC_SITE_URL=https://www.adkivo.my.id in Vercel and change robots.ts fallback to https://www.adkivo.my.id."
+      },
+      {
+        "severity": "Good",
+        "area": "Indexability",
+        "title": "Dynamic sitemap exists",
+        "evidence": "src/app/sitemap.ts exists and pulls platform/blog/team URLs.",
+        "userImpact": "Search engines can discover important pages faster.",
+        "techAction": "Keep sitemap working and monitor HTTP 200 daily."
+      },
+      {
+        "severity": "Good",
+        "area": "Structured Data",
+        "title": "Organization, SoftwareApplication, and WebSite schema exist",
+        "evidence": "src/app/schema.ts and layout JSON-LD injection detected.",
+        "userImpact": "Helps Google and AI systems understand the brand and product.",
+        "techAction": "Add page-specific FAQPage/BreadcrumbList schema where content exists."
+      },
+      {
+        "severity": "Good",
+        "area": "Analytics",
+        "title": "Google Tag Manager is installed",
+        "evidence": "GTMPageView and GoogleTagManager detected in root layout.",
+        "userImpact": "Traffic and conversion events can be measured if GA4/GSC are configured correctly.",
+        "techAction": "Verify GA4 events: page_view, search, platform_view, utm_generator_use, outbound_click."
+      },
+      {
+        "severity": "Medium",
+        "area": "Metadata",
+        "title": "metadataBase is not configured in root metadata",
+        "evidence": "Next.js metadata lacks metadataBase.",
+        "userImpact": "Absolute OG/canonical generation can be less reliable across environments.",
+        "techAction": "Add metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || \"https://www.adkivo.my.id\")."
+      }
+    ],
+    "routes": [
+      "/",
+      "/about",
+      "/admin",
+      "/admin/blog",
+      "/admin/blog/edit/:dynamic",
+      "/admin/blog/new",
+      "/admin/categories",
+      "/blog",
+      "/blog/:dynamic",
+      "/contact",
+      "/platform/:dynamic",
+      "/team",
+      "/team/:dynamic",
+      "/universal-specs",
+      "/utm-generator"
+    ]
   }
 }

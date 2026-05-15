@@ -1,0 +1,41 @@
+{
+  "url": "https://www.adkivo.my.id/",
+  "runs": [
+    {
+      "status": 200,
+      "ttfb": 0.047799,
+      "total": 0.055201,
+      "size": 170535
+    },
+    {
+      "status": 200,
+      "ttfb": 0.04509,
+      "total": 0.051792,
+      "size": 170535
+    },
+    {
+      "status": 200,
+      "ttfb": 0.038315,
+      "total": 0.046383,
+      "size": 170535
+    },
+    {
+      "status": 200,
+      "ttfb": 0.034927,
+      "total": 0.041619,
+      "size": 170535
+    },
+    {
+      "status": 200,
+      "ttfb": 0.048577,
+      "total": 0.056275,
+      "size": 170535
+    }
+  ],
+  "status": 200,
+  "avg_ttfb_ms": 43,
+  "avg_total_ms": 50,
+  "download_bytes": 170535,
+  "pagespeed_api": "blocked_quota",
+  "interpretation": "Fallback HTTP timing only; not a full Lighthouse/Core Web Vitals lab score."
+}

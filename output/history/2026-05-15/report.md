@@ -2,27 +2,27 @@
 
 **Target:** https://www.adkivo.my.id/
 **Cutoff date:** 2026-05-15 (Asia/Jakarta)
-**Scan timestamp:** 2026-05-15T14:48:41.335Z
+**Scan timestamp:** 2026-05-15T16:02:57.914Z
 
 ## Disclosure
 GA4, Search Console, and business signals are mock connector data for MVP. Website crawl is live read-only.
 
 ## Scores
-- Overall: 77/100
+- Overall: 72/100
 - SEO: 100/100
-- AI Visibility: 30/100
+- AI Visibility: 16/100
 - Technical: 100/100
 
 ## Executive Summary
-LumiLab scanned 10 page(s) for https://www.adkivo.my.id/. Overall health is 77/100. Top priority: Weak answer-readiness / FAQ coverage.
+LumiLab scanned 12 page(s) for https://www.adkivo.my.id/. Overall health is 72/100. Top priority: Weak answer-readiness / FAQ coverage.
 
 ## Daily Comparison
-- New issues: 10
+- New issues: 12
 - Repeated issues: 0
 - Resolved issues: 0
 
 ## Weekly Trend
-improving, delta 5, 2 scans compared.
+flat, delta 0, 2 scans compared.
 
 ## Top Priority Issues
 1. **Medium** — Weak answer-readiness / FAQ coverage
