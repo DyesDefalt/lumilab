@@ -1,6 +1,7 @@
 {
   "name": "lumilab-agent",
   "version": "0.1.0",
+  "license": "MIT",
   "description": "Agent-first website visibility monitoring loop for websites, currently configured for Adkivo",
   "type": "module",
   "scripts": {
