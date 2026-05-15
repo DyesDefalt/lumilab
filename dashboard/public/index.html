@@ -1,86 +1,276 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>LumiLab Agent Dashboard</title>
-<style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#172033;--muted:#667085;--line:#e5e7eb;--brand:#6d5efc;--cyan:#00a3ff;--ok:#067647;--warn:#b54708;--bad:#b42318}*{box-sizing:border-box}body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0}.hero{background:radial-gradient(circle at 10% 0%,#00a3ff44,transparent 25%),linear-gradient(135deg,#0b1020,#111827);color:white;padding:34px}.wrap{max-width:1160px;margin:auto;padding:24px}.muted{color:var(--muted)}.hero .muted{color:#d8def5}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.two{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(16,24,40,.05)}.kpi{font-size:34px;font-weight:800;letter-spacing:-.04em}.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:#fff;font-size:12px;margin:4px 4px 0 0}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}button{border:0;border-radius:12px;background:var(--brand);color:white;padding:10px 14px;font-weight:700;cursor:pointer}button.secondary{background:#eef2ff;color:#3538cd}textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit}pre{white-space:pre-wrap;background:#0b1220;color:#e5e7eb;border-radius:14px;padding:14px;max-height:360px;overflow:auto}.list{padding-left:18px}.list li{margin:8px 0}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}.links a{color:white;text-decoration:none;border:1px solid #ffffff33;border-radius:999px;padding:7px 10px;margin-left:6px}.section{margin-top:16px}@media(max-width:900px){.grid,.two{grid-template-columns:1fr}.topbar{display:block}.links a{display:inline-block;margin:6px 6px 0 0}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LumiLab — Visibility Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="/app.js" defer></script>
 </head>
 <body>
-<header class="hero">
-  <div class="topbar wrap">
-    <div>
-      <div class="muted">OpenClaw Agenthon 2026 • Autonomous Website Visibility Agent</div>
-      <h1>LumiLab / Clawdyes</h1>
-      <p class="muted">Scan → Analyze → Remember → Prioritize → Report → Dashboard. Agent-first, dashboard as consumer.</p>
-    </div>
-    <div class="links">
-      <a href="/output/adkivo_seo_ai_visibility_report_clean.pdf">PDF Report</a>
-      <a href="/output/tech_handoff.md">Tech Handoff</a>
-      <a href="/docs/HACKATHON_ALIGNMENT.md">Hackathon Evidence</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">Lumi<span>Lab</span></div>
+        <div class="brand-sub">Visibility Observatory</div>
+      </div>
+      <nav class="nav" aria-label="Dashboard sections">
+        <button type="button" class="nav-btn active" data-panel="overview"><span class="nav-dot brand"></span>Overview</button>
+        <button type="button" class="nav-btn" data-panel="ga4"><span class="nav-dot ga4"></span>GA4 Traffic</button>
+        <button type="button" class="nav-btn" data-panel="gsc"><span class="nav-dot gsc"></span>Search Console</button>
+        <button type="button" class="nav-btn" data-panel="combined"><span class="nav-dot brand"></span>Combined Intel</button>
+        <button type="button" class="nav-btn" data-panel="issues"><span class="nav-dot brand"></span>Issues & Plan</button>
+        <button type="button" class="nav-btn" data-panel="crawl"><span class="nav-dot brand"></span>Crawl Audit</button>
+        <button type="button" class="nav-btn" data-panel="agent"><span class="nav-dot brand"></span>Agent & Memory</button>
+      </nav>
+      <div class="sidebar-footer">
+        OpenClaw Agenthon 2026 · Maton-ready connectors
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-title">
+          <h1>Web visibility report</h1>
+          <p id="range-label">Loading range…</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="date-controls" role="group" aria-label="Date range">
+            <button type="button" class="preset-btn" data-preset="7d">7d</button>
+            <button type="button" class="preset-btn active" data-preset="28d">28d</button>
+            <button type="button" class="preset-btn" data-preset="90d">90d</button>
+            <button type="button" class="preset-btn" data-preset="yesterday">Yesterday</button>
+            <button type="button" class="preset-btn" data-preset="custom">Custom</button>
+            <div class="date-inputs" id="custom-dates" style="display:none">
+              <input type="date" id="date-from" aria-label="Start date" />
+              <span>to</span>
+              <input type="date" id="date-to" aria-label="End date" />
+              <button type="button" class="btn btn-sm btn-ghost" id="btn-apply-dates">Apply</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-ghost" id="btn-refresh">Refresh</button>
+          <button type="button" class="btn btn-primary" id="btn-scan">Run scan</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <p class="disclosure" id="disclosure-text">Loading data sources…</p>
+
+        <!-- OVERVIEW -->
+        <section id="panel-overview" class="panel active">
+          <div class="grid-4 section-gap" id="kpi-strip"></div>
+          <div class="grid-2 section-gap">
+            <article class="card">
+              <div class="card-header">
+                <h2>GA4 × GSC trend</h2>
+                <span class="badge mock">Mock Maton</span>
+              </div>
+              <div class="chart-wrap"><canvas id="chart-overview-trend" aria-label="Sessions and clicks over time"></canvas></div>
+            </article>
+            <article class="card">
+              <div class="card-header"><h2>Health scores</h2></div>
+              <div class="score-cards" id="score-rings"></div>
+            </article>
+          </div>
+          <div class="grid-2 section-gap">
+            <article class="card">
+              <div class="card-header"><h2>Cross-source insights</h2></div>
+              <div id="combined-insights"></div>
+            </article>
+            <article class="card links-inline">
+              <div class="card-header"><h2>Artifacts</h2></div>
+              <p class="muted">Generated by the autonomous agent loop.</p>
+              <a href="/output/adkivo_seo_ai_visibility_report_clean.pdf" target="_blank" rel="noopener">PDF report</a>
+              <a href="/output/latest_report.html" target="_blank" rel="noopener">HTML report</a>
+              <a href="/output/tech_handoff.md" target="_blank" rel="noopener">Tech handoff</a>
+              <a href="/docs/HACKATHON_ALIGNMENT.md" target="_blank" rel="noopener">Hackathon evidence</a>
+            </article>
+          </div>
+          <article class="card section-gap">
+            <div class="card-header"><h2>Query → page → sessions</h2><span class="badge gsc">GSC + GA4</span></div>
+            <div style="overflow-x:auto">
+              <table class="data">
+                <thead>
+                  <tr>
+                    <th>Query</th><th>Page</th><th>GSC clicks</th><th>Position</th><th>GA4 sessions</th><th>Conversions</th><th>Intent</th>
+                  </tr>
+                </thead>
+                <tbody id="query-join-table"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- GA4 -->
+        <section id="panel-ga4" class="panel">
+          <div class="grid-4 section-gap" id="ga4-kpis"></div>
+          <div class="grid-2 section-gap">
+            <article class="card">
+              <div class="card-header"><h2>Sessions over time</h2><span class="badge ga4">GA4</span></div>
+              <div class="chart-wrap"><canvas id="chart-ga4-sessions"></canvas></div>
+            </article>
+            <article class="card">
+              <div class="card-header"><h2>Channel mix</h2></div>
+              <div class="chart-wrap"><canvas id="chart-ga4-channels"></canvas></div>
+            </article>
+          </div>
+          <div class="grid-2 section-gap">
+            <article class="card">
+              <div class="card-header"><h2>Top landing pages</h2></div>
+              <table class="data">
+                <thead><tr><th>Title</th><th>Path</th><th>Sessions</th><th>Conv.</th><th>Engagement</th></tr></thead>
+                <tbody id="ga4-pages-table"></tbody>
+              </table>
+            </article>
+            <article class="card">
+              <div class="card-header"><h2>Key events</h2></div>
+              <table class="data">
+                <thead><tr><th>Event</th><th>Count</th></tr></thead>
+                <tbody id="ga4-events-table"></tbody>
+              </table>
+              <div class="card-header" style="margin-top:18px"><h3>Device split</h3></div>
+              <div class="chart-wrap" style="height:180px"><canvas id="chart-ga4-devices"></canvas></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- GSC -->
+        <section id="panel-gsc" class="panel">
+          <div class="grid-3 section-gap" id="gsc-kpis"></div>
+          <article class="card section-gap">
+            <div class="card-header"><h2>Clicks & impressions</h2><span class="badge gsc">GSC</span></div>
+            <div class="chart-wrap tall"><canvas id="chart-gsc-trend"></canvas></div>
+          </article>
+          <div class="grid-2 section-gap">
+            <article class="card">
+              <div class="card-header"><h2>Top queries</h2></div>
+              <div style="overflow-x:auto">
+                <table class="data">
+                  <thead><tr><th>Query</th><th>Page</th><th>Impr.</th><th>Clicks</th><th>CTR</th><th>Pos.</th><th>Δ Pos</th></tr></thead>
+                  <tbody id="gsc-queries-table"></tbody>
+                </table>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-header"><h2>Top pages in search</h2></div>
+              <table class="data">
+                <thead><tr><th>Page</th><th>Impr.</th><th>Clicks</th><th>CTR</th><th>Pos.</th></tr></thead>
+                <tbody id="gsc-pages-table"></tbody>
+              </table>
+              <div class="card-header" style="margin-top:18px"><h3>Device clicks</h3></div>
+              <div class="chart-wrap" style="height:180px"><canvas id="chart-gsc-devices"></canvas></div>
+            </article>
+          </div>
+          <article class="card section-gap">
+            <div class="card-header"><h2>Top countries (clicks)</h2></div>
+            <table class="data">
+              <thead><tr><th>Country</th><th>Clicks</th></tr></thead>
+              <tbody id="gsc-countries-table"></tbody>
+            </table>
+          </article>
+        </section>
+
+        <!-- COMBINED -->
+        <section id="panel-combined" class="panel">
+          <div class="grid-4 section-gap" id="combined-summary"></div>
+          <article class="card section-gap">
+            <div class="card-header">
+              <h2>Landing page performance matrix</h2>
+              <span class="badge mock">Unified GA4 + GSC</span>
+            </div>
+            <p class="muted">Correlates on-site behavior with search demand. Signals: star, search-demand, conversion-gap.</p>
+            <div style="overflow-x:auto">
+              <table class="data">
+                <thead>
+                  <tr><th>Path</th><th>GA4 sessions</th><th>GA4 conv.</th><th>GSC clicks</th><th>GSC pos.</th><th>Signal</th></tr>
+                </thead>
+                <tbody id="landing-matrix"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- ISSUES -->
+        <section id="panel-issues" class="panel">
+          <div class="memory-bar section-gap" id="issue-counts"></div>
+          <div class="grid-2 section-gap">
+            <article class="card">
+              <div class="card-header"><h2>Priority issues</h2></div>
+              <div id="issues-list"></div>
+            </article>
+            <article class="card">
+              <div class="card-header"><h2>Developer action plan</h2></div>
+              <table class="data">
+                <thead><tr><th>#</th><th>Priority</th><th>Page</th><th>Task</th></tr></thead>
+                <tbody id="dev-plan-table"></tbody>
+              </table>
+            </article>
+          </div>
+        </section>
+
+        <!-- CRAWL -->
+        <section id="panel-crawl" class="panel">
+          <article class="card">
+            <div class="card-header">
+              <h2>Live crawl results</h2>
+              <span class="badge live">Live read-only</span>
+            </div>
+            <p class="muted" id="crawl-meta">—</p>
+            <div style="overflow-x:auto" class="crawl-table">
+              <table class="data">
+                <thead>
+                  <tr><th>Path</th><th>Status</th><th>Time</th><th>H1</th><th>Words</th><th>FAQ</th><th>Schema</th></tr>
+                </thead>
+                <tbody id="crawl-table-body"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <!-- AGENT -->
+        <section id="panel-agent" class="panel">
+          <div class="grid-2 section-gap">
+            <article class="card">
+              <div class="card-header"><h2>Agent status</h2></div>
+              <p><strong>Target:</strong> <span id="agent-target">—</span></p>
+              <p><strong>Last report:</strong> <span id="agent-updated">—</span></p>
+              <p class="muted" id="agent-status-msg"></p>
+              <h3 style="font-family:var(--font-display);font-weight:400;margin-top:18px">Connectors</h3>
+              <div class="connector-grid" id="connector-status"></div>
+              <h3 style="font-family:var(--font-display);font-weight:400;margin-top:18px">Artifacts</h3>
+              <div class="pill-row" id="artifact-pills"></div>
+            </article>
+            <article class="card">
+              <div class="card-header"><h2>Memory insights</h2></div>
+              <div class="memory-bar" id="memory-stats"></div>
+            </article>
+          </div>
+          <article class="card section-gap">
+            <div class="card-header"><h2>Executive summary</h2></div>
+            <div id="executive-summary" class="muted"></div>
+          </article>
+          <div class="grid-2 section-gap">
+            <article class="card assistant-wrap">
+              <div class="card-header"><h2>Ask LumiLab agent</h2></div>
+              <p class="muted">Grounded in latest report, tech handoff, and capabilities — not a generic chatbot.</p>
+              <textarea id="agent-question" placeholder="What should I fix first? Which queries deserve new content?"></textarea>
+              <p style="margin-top:10px"><button type="button" class="btn btn-primary" id="btn-ask">Ask agent</button></p>
+              <pre id="agent-answer">Ready.</pre>
+            </article>
+            <article class="card">
+              <div class="card-header"><h2>Skills & guardrails</h2></div>
+              <div id="skills-list"></div>
+              <p style="margin-top:14px"><strong>Guardrails</strong></p>
+              <div class="pill-row" id="guardrails"></div>
+            </article>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
-</header>
-<main class="wrap">
-  <section class="grid" id="kpis"></section>
-  <section class="two section">
-    <div class="card">
-      <h2>Top priorities</h2>
-      <ol class="list" id="issues"><li>Loading…</li></ol>
-    </div>
-    <div class="card">
-      <h2>Agent status</h2>
-      <div id="status">Loading…</div>
-      <p><button onclick="runScan()">Run autonomous scan</button> <button class="secondary" onclick="loadAll()">Refresh</button></p>
-    </div>
-  </section>
-  <section class="two section">
-    <div class="card">
-      <h2>Ask LumiLab Agent</h2>
-      <p class="muted">Grounded in latest report, tech handoff, capability manifest, and connector data. Not a generic chatbot.</p>
-      <textarea id="q" placeholder="What should I fix first? What changed? What should I tell my developer?"></textarea>
-      <p><button onclick="ask()">Ask agent</button></p>
-      <pre id="answer">Ready.</pre>
-    </div>
-    <div class="card">
-      <h2>Connected skills</h2>
-      <div id="skills">Loading…</div>
-    </div>
-  </section>
-  <section class="card section">
-    <h2>Executive summary</h2>
-    <div id="summary" class="muted">Loading…</div>
-  </section>
-</main>
-<script>
-const $ = id => document.getElementById(id);
-async function j(url, opts){ const r = await fetch(url, opts); if(!r.ok) throw new Error(await r.text()); return r.json(); }
-function scoreCard(name, value, note='') { return `<div class="card"><div class="muted">${name}</div><div class="kpi">${value ?? '—'}</div><div class="muted">${note}</div></div>`; }
-async function loadAll(){
-  try{
-    const [report,status,caps] = await Promise.all([j('/api/latest-report'), j('/api/agent/status'), j('/api/agent/capabilities')]);
-    const scores = report.scores || report.score || {};
-    $('kpis').innerHTML = scoreCard('Website Health', scores.websiteHealth ?? scores.overall ?? '—') + scoreCard('SEO Health', scores.seo ?? '—') + scoreCard('AI / GEO Visibility', scores.aiVisibility ?? scores.ai ?? '—') + scoreCard('Business Opportunity', scores.businessOpportunity ?? '—');
-    const issues = report.priorityIssues || report.issues || [];
-    $('issues').innerHTML = issues.slice(0,5).map(i => `<li><b>${i.priority || i.severity || 'Issue'}</b> — ${i.title || i.issue || i.message || JSON.stringify(i).slice(0,120)}</li>`).join('') || '<li>No priority issues found.</li>';
-    $('summary').innerHTML = (report.executiveSummary || report.summary || 'No summary available.').toString().replaceAll('\n','<br>');
-    $('status').innerHTML = `<p><b>Target:</b> ${status.targetUrl || report.targetUrl || '—'}</p><p><b>Updated:</b> ${status.files?.find(f=>f.path.includes('latest_report.json'))?.updatedAt || '—'}</p>` + status.files.map(f => `<span class="pill ${f.exists?'ok':'bad'}">${f.exists?'✓':'×'} ${f.path}</span>`).join('');
-    $('skills').innerHTML = caps.skills.map(s => `<span class="pill">${s.name}</span><p class="muted">${s.use}</p>`).join('') + `<hr><p><b>Guardrails:</b></p>` + caps.guardrails.map(g => `<span class="pill">${g}</span>`).join('');
-  }catch(e){ $('status').innerHTML = `<span class="bad">${e.message}</span>`; }
-}
-async function ask(){
-  $('answer').textContent = 'Thinking…';
-  try { const r = await j('/api/assistant',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:$('q').value})}); $('answer').textContent = r.answer || 'No answer.'; }
-  catch(e){ $('answer').textContent = e.message; }
-}
-async function runScan(){
-  $('status').innerHTML = 'Running scan…';
-  try { await j('/api/agent/run-scan',{method:'POST'}); await loadAll(); }
-  catch(e){ $('status').innerHTML = `<span class="bad">${e.message}</span>`; }
-}
-loadAll();
-</script>
 </body>
 </html>

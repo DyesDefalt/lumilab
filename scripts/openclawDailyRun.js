@@ -2,8 +2,10 @@ import fs from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 
 function run(cmd, args) {
+  const isWin = process.platform === 'win32';
+  const executable = isWin && cmd === 'npm' ? 'npm.cmd' : cmd;
   return new Promise((resolve, reject) => {
-    const p = spawn(cmd, args, { stdio: 'inherit', shell: false });
+    const p = spawn(executable, args, { stdio: 'inherit', shell: isWin });
     p.on('exit', code => code === 0 ? resolve() : reject(new Error(`${cmd} ${args.join(' ')} exited ${code}`)));
   });
 }

@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import OpenAI from 'openai';
 import { capabilityManifest } from '../agent/capabilityManifest.js';
+import { getAnalytics } from './analytics.js';
 
 const app = express();
 const port = Number(process.env.PORT || 3001);
@@ -19,14 +20,30 @@ async function readText(path, fallback = '') {
   try { return await fs.readFile(path, 'utf8'); } catch { return fallback; }
 }
 function runCommand(cmd, args) {
+  const isWin = process.platform === 'win32';
+  const executable = isWin && cmd === 'npm' ? 'npm.cmd' : cmd;
   return new Promise((resolve, reject) => {
-    const p = spawn(cmd, args, { cwd: process.cwd(), shell: false });
+    const p = spawn(executable, args, { cwd: process.cwd(), shell: isWin });
     let out = '', err = '';
     p.stdout.on('data', d => out += d.toString());
     p.stderr.on('data', d => err += d.toString());
     p.on('exit', code => code === 0 ? resolve({ code, out, err }) : reject(new Error(err || out || `${cmd} exited ${code}`)));
   });
 }
+
+app.get('/api/analytics', (req, res) => {
+  try {
+    const { from, to, preset } = req.query;
+    const data = getAnalytics({
+      from: typeof from === 'string' ? from : undefined,
+      to: typeof to === 'string' ? to : undefined,
+      preset: typeof preset === 'string' ? preset : '28d',
+    });
+    res.json(data);
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
 
 app.get('/api/latest-report', async (_, res) => {
   const report = await readJson('output/latest_report.json');
