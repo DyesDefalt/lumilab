@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LumiLab Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="logo">LumiLab</span>
+      <span class="tagline">Autonomous Website Visibility Agent</span>
+    </div>
+    <div class="header-actions">
+      <span id="cutoff-date" class="cutoff">—</span>
+      <a id="pdf-link" href="/api/report.pdf" class="btn btn-outline" download>Download PDF</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="empty-state" class="empty hidden">
+      <h2>No report yet</h2>
+      <p>Run <code>npm run scan</code> in the lumilab directory to generate your first report.</p>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="connector-row" id="connectors"></div>
+
+      <div class="scores-grid">
+        <div class="score-card">
+          <span class="score-label">Website Health</span>
+          <span class="score-value" id="score-health">—</span>
+        </div>
+        <div class="score-card">
+          <span class="score-label">SEO Score</span>
+          <span class="score-value" id="score-seo">—</span>
+        </div>
+        <div class="score-card">
+          <span class="score-label">AI Visibility</span>
+          <span class="score-value" id="score-ai">—</span>
+        </div>
+        <div class="score-card accent">
+          <span class="score-label">Overall</span>
+          <span class="score-value" id="score-overall">—</span>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h2>Executive summary</h2>
+        <p id="executive-summary" class="summary-text"></p>
+      </section>
+
+      <div class="two-col">
+        <section class="panel">
+          <h2>Trend cards</h2>
+          <div class="trend-grid" id="trend-cards"></div>
+        </section>
+        <section class="panel">
+          <h2>Daily / weekly comparison</h2>
+          <div id="comparison"></div>
+        </section>
+      </div>
+
+      <section class="panel">
+        <h2>Top 5 priority issues</h2>
+        <ul id="top-issues" class="issue-list"></ul>
+      </section>
+
+      <section class="panel assistant-panel">
+        <h2>AI Assistant <span class="badge">BYOK</span></h2>
+        <p class="hint">Answers use latest_report.json only. API key stays on server.</p>
+        <div class="chat-box">
+          <div id="chat-messages" class="messages"></div>
+          <form id="chat-form" class="chat-form">
+            <input type="text" id="chat-input" placeholder="What should I fix first?" autocomplete="off">
+            <button type="submit" class="btn">Ask</button>
+          </form>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>LumiLab · Read-only monitoring · No automatic website edits</p>
+  </footer>
+  <script src="/app.js"></script>
+</body>
+</html>

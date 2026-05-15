@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LumiLab — Full Project Docs | OpenClaw Agenthon 2026</title>
+<style>
+:root{--bg:#0b1020;--paper:#fff;--ink:#172033;--muted:#667085;--line:#e5e7eb;--soft:#f8fafc;--brand:#6d5efc;--brand2:#00c2ff;--danger:#b42318;--warn:#b54708;--ok:#067647}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#f6f7fb;line-height:1.55}
+.hero{background:radial-gradient(circle at 12% 10%,rgba(0,194,255,.26),transparent 24%),radial-gradient(circle at 88% 0%,rgba(109,94,252,.32),transparent 24%),linear-gradient(135deg,#091020 0%,#111a34 60%,#141b2d 100%);color:#fff;padding:56px 28px 42px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}.hero h1{font-size:46px;line-height:1.04;margin:12px 0 14px;letter-spacing:-.03em}.hero p{font-size:18px;color:#d8def5;max-width:900px;margin:0}
+.eyebrow{font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9ccfff;font-size:12px}.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.pill{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;font-size:13px;color:#eef2ff}
+main{max-width:1180px;margin:0 auto;padding:34px 24px 70px}.grid{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start}
+nav{position:sticky;top:16px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 14px 40px rgba(16,24,40,.07)}nav h3{margin:0 0 10px;font-size:14px}nav a{display:block;color:#334155;text-decoration:none;font-size:13px;padding:7px 0;border-bottom:1px solid #f2f4f7}nav a:last-child{border-bottom:0}
+section{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;margin-bottom:22px;box-shadow:0 10px 30px rgba(16,24,40,.04)}
+h2{font-size:28px;line-height:1.2;margin:0 0 18px;letter-spacing:-.02em}h3{font-size:20px;margin:24px 0 10px;letter-spacing:-.01em}h4{font-size:16px;margin:18px 0 8px}p{margin:0 0 12px}ul,ol{margin:10px 0 16px;padding-left:22px}li{margin:6px 0}
+.callout{border:1px solid #c7d7fe;background:#f5f8ff;border-radius:16px;padding:16px 18px;margin:18px 0}.callout strong{color:#3538cd}.danger{border-color:#fecdca;background:#fffbfa}.danger strong{color:var(--danger)}.ok{border-color:#abefc6;background:#f6fef9}.ok strong{color:var(--ok)}.warn{border-color:#fedf89;background:#fffcf5}.warn strong{color:var(--warn)}
+table{width:100%;border-collapse:collapse;margin:16px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}th,td{border-bottom:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top;font-size:14px}th{background:#f8fafc;font-weight:700;color:#344054}tr:last-child td{border-bottom:0}
+code{font-family:Consolas,Menlo,monospace;background:#eef2ff;padding:2px 5px;border-radius:6px;font-size:.92em}pre{background:#0b1220;color:#e5e7eb;border-radius:16px;padding:16px;overflow:auto;border:1px solid #1f2937;font-size:13px;line-height:1.5}pre code{background:transparent;color:inherit;padding:0;border-radius:0}
+.badge{display:inline-block;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:700}.p0{background:#fee4e2;color:#912018}.p1{background:#fef0c7;color:#93370d}.p2{background:#e0f2fe;color:#075985}.p3{background:#ecfdf3;color:#067647}.small{font-size:13px;color:var(--muted)}.source-list li{font-size:13px}.footer{font-size:12px;color:#667085;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+@media(max-width:980px){.grid{grid-template-columns:1fr}nav{position:relative;top:auto}.hero h1{font-size:34px}}@media print{body{background:#fff}.hero{background:#111827 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}nav{display:none}main{padding:20px}section{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<div class="eyebrow">OpenClaw Agenthon 2026 • Build Sprint Docs</div>
+<h1>LumiLab — Autonomous Website Visibility Agent</h1>
+<p>Dokumentasi lengkap MVP, strategi penilaian, arsitektur agent, data adapter, memory, dashboard, setup OpenClaw, Cursor prompt, timeline 12 jam, dan checklist submission untuk membangun produk yang feasible bagi non-coder dengan bantuan vibecoding.</p>
+<div class="meta">
+<span class="pill">Domain: lumilab.id</span><span class="pill">Category: Autonomous Website Visibility Agent</span><span class="pill">MVP Demo: Web-commerce sample site</span><span class="pill">Core Loop: Scan → Analyze → Remember → Prioritize → Report</span>
+</div>
+</div>
+</header>
+<main class="grid">
+<nav>
+<h3>Daftar Isi</h3>
+<a href="#summary">1. Executive Summary</a><a href="#facts">2. Fakta, Data & Basis Strategi</a><a href="#judging">3. Strategi Penilaian</a><a href="#product">4. Detail Project</a><a href="#scope">5. MVP Scope</a><a href="#architecture">6. Architecture & Flow</a><a href="#tools">7. Tools</a><a href="#openclaw">8. OpenClaw Setup</a><a href="#mcp">9. Skills, MCP & Connectors</a><a href="#data">10. Mock Data & API</a><a href="#logic">11. Logic & Scoring</a><a href="#dashboard">12. Dashboard & AI Assistant</a><a href="#rules">13. Rules</a><a href="#build">14. Cursor Build Prompts</a><a href="#tasks">15. 12-Hour Task List</a><a href="#docs">16. Deck, Video, README</a><a href="#risk">17. Risk & Fallback</a><a href="#acceptance">18. Winning Criteria</a><a href="#sources">19. Sources</a>
+</nav>
+<div>
+<section id="summary"><h2>1. Executive Summary</h2>
+<p><strong>LumiLab</strong> adalah autonomous website visibility agent yang membantu bisnis memahami apakah website mereka mudah ditemukan, mudah dipahami search engine, siap muncul di AI-assisted discovery, dan punya masalah teknis atau konten yang menghambat pertumbuhan.</p>
+<p>Product thesis LumiLab: setiap website sekarang tidak hanya bersaing di Google Search, tetapi juga di AI-generated answers, search snippets, product rich results, dan discovery journey yang semakin otomatis. Banyak founder, developer, dan UMKM bisa membuat website, tetapi tidak punya marketing intelligence yang berjalan terus-menerus untuk membaca masalah, memprioritaskan tindakan, dan menerjemahkan insight menjadi task teknis.</p>
+<div class="callout ok"><strong>Winning angle:</strong> LumiLab bukan chatbot SEO. LumiLab adalah agentic monitoring layer yang melakukan tool call, menjalankan autonomous loop, membaca website secara read-only, menggabungkan mock/live connector-ready data, memakai memory, lalu menghasilkan report dan action plan.</div>
+<table><tr><th>Field</th><th>Isi</th></tr><tr><td>Product Name</td><td><strong>LumiLab</strong></td></tr><tr><td>Domain</td><td><code>lumilab.id</code></td></tr><tr><td>Category</td><td>Autonomous Website Visibility Agent</td></tr><tr><td>Tagline</td><td>Turning website signals into prioritized growth actions.</td></tr><tr><td>MVP Demo</td><td>Sample web-commerce website because it has more complex page types and clearer business signals.</td></tr><tr><td>Core Value</td><td>Scan, analyze, remember, prioritize, report.</td></tr></table>
+</section>
+<section id="facts"><h2>2. Fakta, Data & Basis Strategi</h2>
+<h3>2.1 Competition facts</h3>
+<ul><li>Hackathon berjalan 12 jam dan berfokus pada AI Agent / Multi-Agent Systems.</li><li>Project wajib punya elemen reasoning, decision-making, tool usage, workflow execution, dan autonomous task completion.</li><li>Project tidak boleh hanya berupa chatbot biasa atau UI kosong tanpa backend AI yang fungsional.</li><li>Bobot terbesar ada pada <strong>Creativity & Originality (30%)</strong> dan <strong>Autonomy & Agent Behaviour (30%)</strong>.</li><li>Pitch deck wajib PDF maksimal 5 slide dan demo video maksimal 2 menit.</li></ul>
+<div class="callout"><strong>Implication:</strong> Fokus build tidak boleh di UI berlebihan. Fokus utama adalah agent loop yang berjalan dan bisa didemokan: website scan → data adapter → memory recall → analysis → priority scoring → report generation → dashboard update.</div>
+<h3>2.2 Market facts</h3>
+<ul><li>e-Conomy SEA 2024 mencatat ekonomi digital Indonesia mencapai sekitar <strong>US$90B GMV pada 2024</strong>, dan e-commerce menjadi kontributor besar dengan <strong>US$65B GMV</strong>.</li><li>Komdigi mengutip data Kementerian Koperasi dan UKM bahwa jumlah UMKM Indonesia pada 2024 mencapai lebih dari <strong>65 juta unit</strong>.</li><li>Pemerintah menargetkan peningkatan jumlah UMKM yang mengadopsi teknologi digital dari <strong>27 juta ke 30 juta</strong> pada 2024.</li><li>Google Search Console API dapat mengembalikan traffic data berdasarkan row keys/dimensions seperti query/page dan metrics seperti clicks, impressions, CTR, dan position.</li><li>Google Analytics Data API digunakan untuk menjalankan report terhadap GA4 property ID dan contoh resmi memakai credentials dari environment variable <code>GOOGLE_APPLICATION_CREDENTIALS</code>.</li><li>WooCommerce REST API mendukung consumer key dan consumer secret untuk koneksi aplikasi.</li><li>mem9 diposisikan sebagai long-term cloud memory untuk OpenClaw dengan visual dashboard.</li></ul>
+<h3>2.3 Strategic conclusion</h3><p>Indonesia punya pasar website bisnis dan UMKM digital yang besar, tetapi gap marketing dan analytics masih nyata. LumiLab masuk sebagai agentic layer yang mengubah website data menjadi keputusan prioritas. Ini lebih kuat daripada “SEO checker” karena mempunyai memory, recurring issue escalation, dan business impact logic.</p>
+</section>
+<section id="judging"><h2>3. Strategi Berdasarkan Bobot Penilaian</h2>
+<table><tr><th>Kriteria</th><th>Bobot</th><th>Strategi LumiLab</th></tr><tr><td>Creativity & Originality</td><td><strong>30%</strong></td><td>Positioning sebagai website visibility observability agent, bukan SEO checker atau content planner.</td></tr><tr><td>Autonomy & Agent Behaviour</td><td><strong>30%</strong></td><td>Tampilkan autonomous loop: scan, analyze, recall memory, compare, prioritize, report, save memory.</td></tr><tr><td>Technical Execution</td><td><strong>20%</strong></td><td>Buat connector-ready architecture dengan mock/live adapter, crawler real, scoring engine, memory, dashboard.</td></tr><tr><td>Use Case Clarity & Impact</td><td><strong>10%</strong></td><td>Problem jelas: bisnis punya website tetapi tidak tahu apa yang perlu diperbaiki untuk search, AI visibility, dan growth.</td></tr><tr><td>Real-World Deployability</td><td><strong>10%</strong></td><td>Repo public, README jelas, .env.example, demo video, sample data, dashboard, report output.</td></tr></table>
+<div class="callout ok"><strong>Scoring focus:</strong> 60% nilai berada pada creativity/originality dan autonomy/agent behaviour. Karena itu P0 build harus mengutamakan agent behaviour yang nyata, bukan kosmetik dashboard.</div>
+</section>
+<section id="product"><h2>4. Detail Project</h2>
+<h3>4.1 Problem statement</h3><p>Banyak pemilik bisnis, founder, developer, dan UMKM sudah bisa membuat website, tetapi tidak punya sistem yang secara rutin mengecek apakah website tersebut mudah ditemukan di search engine, mudah dipahami oleh AI systems, dan cukup jelas untuk customer. Tools analytics seperti GA4 dan Search Console kaya data, tetapi output-nya sulit diterjemahkan menjadi tindakan prioritas.</p>
+<h3>4.2 Solution overview</h3><p>LumiLab adalah autonomous website visibility agent yang diinstall sebagai read-only monitoring layer. Agent melakukan crawl website, membaca sinyal SEO, AI visibility readiness, mock/live performance data, historical memory, lalu menghasilkan priority report dan developer action plan.</p>
+<h3>4.3 Target users</h3><table><tr><th>User</th><th>Pain Point</th><th>Value LumiLab</th></tr><tr><td>Founder / owner</td><td>Tidak tahu kondisi website</td><td>Executive summary dan priority scale</td></tr><tr><td>Developer</td><td>Tidak paham marketing impact</td><td>Developer-ready task list</td></tr><tr><td>Marketer</td><td>Terlalu banyak data tools</td><td>Actionable insight dari GA4/GSC/SEO signals</td></tr><tr><td>UMKM</td><td>Tidak punya tim SEO</td><td>Monitoring dan rekomendasi otomatis</td></tr><tr><td>Agency</td><td>Butuh reporting cepat</td><td>Automated audit/reporting engine</td></tr></table>
+<h3>4.4 Website coverage</h3><ul><li>Company profile website</li><li>Blog / content website</li><li>Media website</li><li>Landing page</li><li>Web-commerce / WooCommerce / Shopify-like website</li><li>Campaign microsite</li></ul>
+</section>
+<section id="scope"><h2>5. MVP Scope & Non-Scope</h2>
+<h3>P0 — Must Have untuk Submission</h3><ul><li>Real website crawler untuk scan 3–5 halaman.</li><li>SEO metadata extractor: title, meta description, H1/H2, canonical, images alt, internal links.</li><li>AI visibility readiness checker: FAQ, schema, semantic clarity, entity clarity, product/service clarity, trust signal.</li><li>Mock GA4 adapter.</li><li>Mock Search Console adapter.</li><li>Mock commerce/business signal adapter.</li><li>Memory layer dengan mem9 atau local fallback.</li><li>Priority scoring engine.</li><li>Report generator JSON + Markdown/HTML.</li><li>Simple dashboard membaca latest report.</li><li>OpenClaw agent prompt/config untuk menjalankan workflow.</li></ul>
+<h3>P1 — Should Have kalau waktu cukup</h3><ul><li>BYOK AI Assistant di dashboard menggunakan OpenAI-compatible endpoint.</li><li>Cron simulation: daily/weekly report command.</li><li>Webhook endpoint untuk push report ke dashboard.</li><li>Sample web-commerce store dengan product pages.</li><li>Export PDF sederhana dari report.</li></ul>
+<h3>P2 — Nice to Have</h3><ul><li>Real GA4 OAuth / service account.</li><li>Real Search Console API.</li><li>Real WooCommerce API read-only.</li><li>Lighthouse/Core Web Vitals integration.</li><li>Telegram/Discord alert.</li><li>Multi-agent architecture: crawler agent, analyst agent, reporter agent.</li></ul>
+<div class="callout danger"><strong>Do not overbuild:</strong> Jangan membuang waktu pada real OAuth, multi-tenant SaaS, payment, atau auto-fix website. Untuk hackathon, yang paling penting adalah autonomous loop dan tool usage yang terlihat jelas.</div>
+</section>
+<section id="architecture"><h2>6. Architecture & Agent Flow</h2>
+<h3>6.1 High-level architecture</h3>
+<pre><code>Sample Website / Live Website
+        ↓ read-only crawl
+Website Crawler Tool
+        ↓
+SEO + AI Visibility Analyzer
+        ↓
+Mock / Live Data Adapters
+(GA4, Search Console, Commerce Signals)
+        ↓
+Memory Layer
+(mem9 or local memory fallback)
+        ↓
+Priority & Impact Engine
+        ↓
+Report Generator
+(JSON + Markdown/HTML)
+        ↓
+Dashboard + AI Assistant
+        ↓
+OpenClaw Daily/Weekly Report</code></pre>
+<h3>6.2 Autonomous loop</h3><ol><li>User memasukkan website URL atau agent memakai target dari config.</li><li>Agent memanggil tool <code>crawl_website</code>.</li><li>Agent memanggil adapter GA4/GSC/commerce signal.</li><li>Agent mencari previous scan di memory.</li><li>Agent melakukan analisis SEO dan AI visibility.</li><li>Agent menghitung priority score dan estimated impact.</li><li>Agent generate report.</li><li>Agent menyimpan latest scan dan recommendation ke memory.</li><li>Dashboard membaca latest report.</li></ol>
+<div class="callout"><strong>Demo phrase:</strong> “The user only provides a URL. LumiLab independently scans the website, reads performance signals, recalls historical memory, detects recurring issues, escalates priorities, generates the report, and updates the dashboard.”</div>
+</section>
+<section id="tools"><h2>7. Mandatory & Optional Tools</h2>
+<h3>7.1 Mandatory tools untuk build</h3><table><tr><th>Tool</th><th>Use</th><th>Priority</th></tr><tr><td>Cursor</td><td>Vibecoding core app, connectors, dashboard, README</td><td><span class="badge p0">P0</span></td></tr><tr><td>OpenClaw</td><td>Agent interface, skill execution, workflow demo</td><td><span class="badge p0">P0</span></td></tr><tr><td>Node.js + npm</td><td>Backend, connectors, dashboard server</td><td><span class="badge p0">P0</span></td></tr><tr><td>Git + GitHub</td><td>Public repo and commit history</td><td><span class="badge p0">P0</span></td></tr><tr><td>mem9</td><td>Persistent memory layer</td><td><span class="badge p0">P0/P1</span></td></tr><tr><td>OpenAI-compatible API</td><td>BYOK AI assistant and report reasoning</td><td><span class="badge p0">P0</span></td></tr><tr><td>Mock data JSON</td><td>Stable GA4/GSC/commerce simulation</td><td><span class="badge p0">P0</span></td></tr></table>
+<h3>7.2 Optional / nice-to-have tools</h3><table><tr><th>Tool</th><th>Use</th><th>Priority</th></tr><tr><td>Hermes</td><td>Alternative agent interface if OpenClaw setup stuck</td><td><span class="badge p1">P1</span></td></tr><tr><td>Bolt / Emergent</td><td>Fast dashboard prototype</td><td><span class="badge p1">P1</span></td></tr><tr><td>Kiro / HyperAgent</td><td>Code generation and agent runner assistance</td><td><span class="badge p1">P1</span></td></tr><tr><td>Playwright</td><td>More robust crawling / screenshots</td><td><span class="badge p2">P2</span></td></tr><tr><td>Lighthouse</td><td>Performance audit</td><td><span class="badge p2">P2</span></td></tr><tr><td>Google APIs</td><td>Real GA4/GSC integration</td><td><span class="badge p2">P2</span></td></tr><tr><td>WooCommerce REST API</td><td>Real product/order data</td><td><span class="badge p2">P2</span></td></tr></table>
+</section>
+<section id="openclaw"><h2>8. How to Set OpenClaw AI Agent</h2>
+<h3>8.1 OpenClaw role</h3><p>OpenClaw menjadi agent interface dan workflow executor. Dashboard bukan “agent”. Dashboard hanya surface untuk menampilkan output. Agent utama tetap LumiLab di OpenClaw yang menjalankan task secara autonomous.</p>
+<h3>8.2 Agent identity</h3>
+<pre><code>Agent Name:
+LumiLab Visibility Agent
+
+Mission:
+Autonomously scan a website, analyze SEO and AI visibility signals,
+combine performance and business data, recall previous memory,
+prioritize issues by business impact, generate executive report,
+and save the latest scan to memory.
+
+Permission:
+Read-only to website and external data.
+Write-only to LumiLab output files and memory layer.
+Never modify website content in MVP.</code></pre>
+<h3>8.3 Recommended OpenClaw hooks</h3><table><tr><th>Hook</th><th>Status</th><th>Reason</th></tr><tr><td>session-memory</td><td>Enable</td><td>Menguatkan continuity dan agent context.</td></tr><tr><td>command-logger</td><td>Enable</td><td>Memudahkan debugging, README, dan demo trace.</td></tr><tr><td>bootstrap-extra-files</td><td>Enable</td><td>Membantu setup struktur file awal.</td></tr><tr><td>boost-md</td><td>Enable</td><td>Membantu dokumentasi dan report markdown.</td></tr><tr><td>compaction-notifier</td><td>Enable</td><td>Mengurangi risiko konteks terlalu panjang.</td></tr></table>
+<h3>8.4 OpenClaw agent system instruction</h3>
+<pre><code>You are LumiLab Visibility Agent.
+
+You operate as an autonomous website visibility analyst.
+You are not a general chatbot.
+
+Primary mission:
+1. Crawl the target website in read-only mode.
+2. Extract SEO metadata, page structure, content clarity, and AI visibility signals.
+3. Load GA4, Search Console, and business signals from connector adapters.
+4. Search memory for previous scans and unresolved issues.
+5. Compare latest scan against historical context.
+6. Prioritize issues using the LumiLab priority formula.
+7. Generate executive summary and developer-ready action plan.
+8. Save the latest scan, issues, and recommendations to memory.
+
+Rules:
+- Never modify the website in MVP.
+- Never write API keys into logs or reports.
+- Always label mock data as mock connector data.
+- If a live API is unavailable, use standardized mock adapters.
+- Focus on business impact and actionability.
+- Complete the task end-to-end without asking unnecessary follow-up questions.</code></pre>
+<h3>8.5 OpenCloudOS dependency commands</h3>
+<pre><code># Check OS and package manager
+cat /etc/os-release
+which dnf || which yum
+
+# Base dependencies
+dnf update -y || yum update -y
+dnf install -y curl wget git unzip jq ca-certificates gnupg make gcc gcc-c++ tar || yum install -y curl wget git unzip jq ca-certificates gnupg make gcc gcc-c++ tar
+
+# Node.js 20
+curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
+dnf install -y nodejs || yum install -y nodejs
+
+node -v
+npm -v</code></pre>
+</section>
+<section id="mcp"><h2>9. Skills, MCP & Connectors</h2>
+<h3>9.1 Mandatory capabilities</h3><table><tr><th>Capability</th><th>Implementation</th><th>Priority</th></tr><tr><td>Website fetch/crawl</td><td>Node fetch + cheerio or Playwright</td><td><span class="badge p0">P0</span></td></tr><tr><td>Filesystem read/write</td><td>Read mock data, write reports</td><td><span class="badge p0">P0</span></td></tr><tr><td>Memory</td><td>mem9, fallback local JSON</td><td><span class="badge p0">P0</span></td></tr><tr><td>Report summarizer</td><td>LLM or local template generator</td><td><span class="badge p0">P0</span></td></tr><tr><td>GitHub</td><td>Repo, commit, README, public submission</td><td><span class="badge p0">P0</span></td></tr></table>
+<h3>9.2 Recommended MCP / connector list</h3><ul><li><strong>Filesystem MCP:</strong> read mock data, write latest_report.</li><li><strong>Git/GitHub MCP:</strong> manage repo, issues, README, commit workflow.</li><li><strong>Fetch/Browser MCP:</strong> crawl website pages.</li><li><strong>Memory MCP:</strong> mem9 persistent memory.</li><li><strong>Google API connector:</strong> future GA4/GSC live mode.</li><li><strong>WooCommerce connector:</strong> future commerce signal live mode.</li></ul>
+<h3>9.3 Skill installation priority</h3><table><tr><th>Skill</th><th>Decision</th><th>Note</th></tr><tr><td>clawhub</td><td>Install</td><td>Useful package/skill discovery.</td></tr><tr><td>github</td><td>Install</td><td>Supports repo workflow.</td></tr><tr><td>gh-issues</td><td>Install if GitHub CLI ready</td><td>Useful but not core.</td></tr><tr><td>summarize</td><td>Install</td><td>Useful for report generation.</td></tr><tr><td>blogwatcher</td><td>Optional</td><td>Needs Go; not core for MVP.</td></tr><tr><td>gog</td><td>Skip for MVP</td><td>Google OAuth/API setup may consume too much time.</td></tr></table>
+</section>
+<section id="data"><h2>10. Mock Data & Live API Adapter</h2>
+<p>Mock data aman digunakan karena tujuannya membuktikan connector-ready logic. Prinsipnya: agent reasoning layer tidak boleh bergantung pada apakah data berasal dari mock JSON atau live API. Semua data harus dinormalisasi ke format standar.</p>
+<h3>10.1 Folder structure</h3>
+<pre><code>lumilab/
+├─ mock-data/
+│  ├─ ga4_yesterday.json
+│  ├─ gsc_yesterday.json
+│  ├─ commerce_products.json
+│  ├─ commerce_orders.json
+│  └─ previous_scan.json
+├─ connectors/
+│  ├─ websiteCrawler.js
+│  ├─ ga4MockConnector.js
+│  ├─ ga4LiveConnector.js
+│  ├─ gscMockConnector.js
+│  ├─ gscLiveConnector.js
+│  ├─ commerceMockConnector.js
+│  └─ commerceLiveConnector.js
+├─ agent/
+│  ├─ normalizeData.js
+│  ├─ seoAnalyzer.js
+│  ├─ aiVisibilityAnalyzer.js
+│  ├─ priorityScoring.js
+│  ├─ memoryClient.js
+│  └─ reportGenerator.js
+├─ dashboard/
+│  └─ app
+├─ output/
+│  ├─ latest_report.json
+│  └─ latest_report.md
+├─ .env.example
+└─ README.md</code></pre>
+<h3>10.2 .env.example</h3>
+<pre><code>DATA_MODE=mock
+PORT=3001
+TARGET_SITE_URL=https://demo-store.example.com
+CRAWL_LIMIT=5
+
+OPENAI_API_KEY=
+OPENAI_BASE_URL=https://api.openai.com/v1
+OPENAI_MODEL=gpt-4o-mini
+
+MEM9_API_KEY=
+MEM9_SPACE_ID=
+
+GA4_PROPERTY_ID=
+GOOGLE_APPLICATION_CREDENTIALS=./credentials/google-service-account.json
+GSC_SITE_URL=https://demo-store.example.com/
+
+WOOCOMMERCE_URL=https://demo-store.example.com
+WOOCOMMERCE_CONSUMER_KEY=
+WOOCOMMERCE_CONSUMER_SECRET=</code></pre>
+<h3>10.3 Standard normalized object</h3><pre><code>{
+  "site": "https://demo-store.example.com",
+  "scan_date": "2026-05-15",
+  "website_pages": [],
+  "ga4": {},
+  "search_console": {},
+  "commerce": {},
+  "previous_scan": {}
+}</code></pre>
+<h3>10.4 Connector selector</h3>
+<pre><code>export async function loadPerformanceData() {
+  const mode = process.env.DATA_MODE || "mock";
+
+  if (mode === "live") {
+    return {
+      ga4Data: await getLiveGA4(),
+      gscData: await getLiveGSC(),
+      commerceData: await getLiveCommerce()
+    };
+  }
+
+  return {
+    ga4Data: await getMockGA4(),
+    gscData: await getMockGSC(),
+    commerceData: await getMockCommerce()
+  };
+}</code></pre>
+<div class="callout"><strong>Deck wording:</strong> “The MVP uses connector-ready mock adapters for GA4, Search Console, and commerce data. The website crawler runs live. When API credentials are available, the mock adapters can be replaced with live connectors without changing the agent reasoning layer.”</div>
+</section>
+<section id="logic"><h2>11. Project Logic & Strategy</h2>
+<h3>11.1 Main analysis dimensions</h3><table><tr><th>Dimension</th><th>Signals</th></tr><tr><td>SEO Health</td><td>Title, meta, H1/H2, canonical, alt text, internal links</td></tr><tr><td>AI Visibility</td><td>Schema, FAQ, entity clarity, answerability, trust signals</td></tr><tr><td>Performance Signals</td><td>Sessions, conversions, revenue, engagement</td></tr><tr><td>Search Demand</td><td>Queries, impressions, clicks, CTR, position</td></tr><tr><td>Business Context</td><td>Product/service value, page type, revenue potential</td></tr><tr><td>Memory</td><td>Issue recurrence, days open, resolved/new issue</td></tr></table>
+<h3>11.2 Priority scoring formula</h3><pre><code>Priority Score = Severity × Business Page Value × Traffic Opportunity × Recurrence Factor</code></pre>
+<table><tr><th>Factor</th><th>Scale</th><th>Definition</th></tr><tr><td>Severity</td><td>1–5</td><td>How much the issue blocks visibility or conversion.</td></tr><tr><td>Business Page Value</td><td>1–5</td><td>Homepage, product, service, landing, article, or low-value page.</td></tr><tr><td>Traffic Opportunity</td><td>1–5</td><td>High impressions/sessions but weak CTR/conversion gets higher score.</td></tr><tr><td>Recurrence Factor</td><td>1–3</td><td>New issue = 1, repeated issue = 2, repeated critical = 3.</td></tr></table>
+<h3>11.3 Priority classification</h3><table><tr><th>Score</th><th>Priority</th><th>Action</th></tr><tr><td>141+</td><td>Critical</td><td>Fix first. Mention in executive summary.</td></tr><tr><td>81–140</td><td>High</td><td>Fix in next sprint.</td></tr><tr><td>41–80</td><td>Medium</td><td>Batch with content/technical improvement.</td></tr><tr><td>0–40</td><td>Low</td><td>Backlog hygiene task.</td></tr></table>
+<h3>11.4 Example insight output</h3><pre><code>Issue:
+Product page /product/organic-coffee has no meta description and no product schema.
+
+Reasoning:
+This page has high business value, strong search impressions, and existing conversions.
+The same issue was detected in the previous scan, so LumiLab escalates the priority.
+
+Priority:
+Critical — score 160.
+
+Recommended action:
+Add product-focused meta description, Product structured data, FAQ section, and clearer benefit-led product copy.</code></pre>
+</section>
+<section id="dashboard"><h2>12. Dashboard & AI Assistant</h2>
+<p>Dashboard adalah reporting surface, bukan pengganti agent. Dashboard membaca <code>output/latest_report.json</code> dan menampilkan status, score, issue priority, executive summary, dan developer action plan.</p>
+<h3>Required dashboard sections</h3><ul><li>Connector status: Website Crawler, GA4, Search Console, Commerce, mem9.</li><li>Top scores: Website Health, SEO Health, AI Visibility, Business Opportunity.</li><li>Top 5 priority issues.</li><li>Executive summary.</li><li>Developer action plan.</li><li>Memory insights: new, repeated, resolved issue.</li><li>AI Assistant panel using latest report as context.</li></ul>
+<h3>BYOK AI Assistant</h3><p>AI Assistant hanya membaca latest report dan memory context. Jangan buat chatbot general. Assistant harus menjawab pertanyaan seperti “What should I fix first?”, “Why is this issue critical?”, “What changed from the previous scan?”, dan “What should I tell my developer?”</p>
+</section>
+<section id="rules"><h2>13. User Rules & Project Rules</h2>
+<h3>13.1 User rules</h3><ul><li>User hanya perlu input website URL dan memilih data mode.</li><li>User tidak perlu paham SEO teknis.</li><li>User bisa membaca report dalam format executive atau developer action.</li><li>User dapat mengganti API endpoint dan API key sendiri melalui BYOK.</li><li>User dapat memilih scan mode: manual, daily, weekly.</li></ul>
+<h3>13.2 Project rules</h3><ul><li>Agent read-only terhadap website pada MVP.</li><li>Mock data harus diberi label jelas.</li><li>Semua secret memakai environment variables.</li><li><code>.env</code> wajib masuk <code>.gitignore</code>.</li><li>Dashboard tidak boleh menampilkan API key.</li><li>Report harus dibuat dari latest scan, bukan hardcoded.</li><li>Repo harus dibuat setelah start kompetisi.</li><li>Commit terakhir sebelum deadline.</li><li>README harus reproducible.</li></ul>
+<h3>13.3 Compliance with hackathon requirements</h3><table><tr><th>Requirement</th><th>LumiLab Evidence</th></tr><tr><td>Tool Call Capability</td><td>Crawler, adapter loader, memory read/write, report generator.</td></tr><tr><td>Autonomous Loop</td><td>Scan → analyze → recall → prioritize → report → save.</td></tr><tr><td>Reasoning</td><td>Issue severity, traffic opportunity, memory recurrence.</td></tr><tr><td>Decision-making</td><td>Priority classification and action plan selection.</td></tr><tr><td>Workflow Execution</td><td>End-to-end run command generates dashboard-ready output.</td></tr></table>
+</section>
+<section id="build"><h2>14. How to Build with Cursor</h2>
+<h3>14.1 Build prompt for Cursor</h3><pre><code>Build an MVP called LumiLab: Autonomous Website Visibility Agent.
+
+Goal:
+Create an agent-ready Node.js app that scans a website, analyzes SEO and AI visibility,
+loads mock GA4/GSC/commerce data, compares previous memory, scores issues,
+generates latest_report.json and latest_report.md, and serves a simple dashboard.
+
+Requirements:
+- Use Node.js.
+- Create folders: mock-data, connectors, agent, output, dashboard.
+- Website crawler must really fetch target pages and extract title, meta description, H1/H2, canonical, images alt, internal links, schema, FAQ, word count.
+- GA4/GSC/commerce data can use mock JSON adapters.
+- Add placeholder live connectors with TODO comments.
+- Add priority scoring formula:
+  Priority Score = Severity x Business Page Value x Traffic Opportunity x Recurrence Factor.
+- Add memory client with mem9 support and local JSON fallback.
+- Generate executive summary and developer action plan.
+- Dashboard should run on port 3001 and read output/latest_report.json.
+- Add .env.example and .gitignore.
+- Do not hardcode secrets.
+- Keep code simple and demo-ready.</code></pre>
+<h3>14.2 Cursor prompt for dashboard</h3><pre><code>Create a minimal executive dashboard for LumiLab.
+
+Dashboard must show:
+- Connector status cards
+- Website Health Score
+- SEO Score
+- AI Visibility Score
+- Top Priority Issues
+- Executive Summary
+- Developer Action Plan
+- Memory Changes: new, repeated, resolved
+- AI Assistant panel using latest_report.json as context
+
+Design:
+- Clean SaaS dashboard
+- White background
+- Purple/cyan accent
+- Large readable cards
+- No heavy animation
+- Use port 3001</code></pre>
+<h3>14.3 Cursor prompt for README</h3><pre><code>Write a complete README for LumiLab.
+
+Include:
+- Project description
+- Problem statement
+- Agent workflow
+- Architecture diagram
+- Tech stack
+- Setup instructions
+- Environment variables
+- How to run scan
+- How to open dashboard
+- Mock data explanation
+- Live API connector roadmap
+- Hackathon compliance: tool call, autonomous loop, memory, workflow execution
+- Demo video script
+- Submission links placeholders</code></pre>
+</section>
+<section id="tasks"><h2>15. 12-Hour Task List with Priority</h2>
+<div class="callout warn"><strong>Operating principle:</strong> Build P0 first. UI can be simple. Agent loop must work before 17.00 WIB.</div>
+<table><tr><th>Time</th><th>Priority</th><th>Task</th><th>Output</th></tr><tr><td>09.45–10.15</td><td><span class="badge p0">P0</span></td><td>Create repo, project skeleton, .env.example</td><td>Public repo started</td></tr><tr><td>10.15–11.00</td><td><span class="badge p0">P0</span></td><td>Build mock-data and connector layer</td><td>Mock adapters</td></tr><tr><td>11.00–11.45</td><td><span class="badge p0">P0</span></td><td>Build real website crawler</td><td>Crawl output JSON</td></tr><tr><td>11.45–12.45</td><td><span class="badge p1">P1</span></td><td>Break + draft deck outline and demo script</td><td>Deck skeleton</td></tr><tr><td>12.45–13.45</td><td><span class="badge p0">P0</span></td><td>SEO + AI visibility analyzer</td><td>Issues detected</td></tr><tr><td>13.45–14.30</td><td><span class="badge p0">P0</span></td><td>Priority scoring engine</td><td>Issue score</td></tr><tr><td>14.30–15.15</td><td><span class="badge p0">P0</span></td><td>Memory: mem9 or local fallback</td><td>Previous vs latest</td></tr><tr><td>15.15–16.00</td><td><span class="badge p0">P0</span></td><td>Report generator</td><td>latest_report.json + md</td></tr><tr><td>16.00–17.00</td><td><span class="badge p0">P0</span></td><td>End-to-end scan command</td><td><code>npm run scan</code> works</td></tr><tr><td>17.00–18.15</td><td><span class="badge p1">P1</span></td><td>Dashboard</td><td>Dashboard on port 3001</td></tr><tr><td>18.15–19.00</td><td><span class="badge p1">P1</span></td><td>OpenClaw agent prompt/config integration</td><td>Agent can trigger workflow</td></tr><tr><td>19.00–20.00</td><td><span class="badge p0">P0</span></td><td>README + project description</td><td>Submission-ready docs</td></tr><tr><td>20.00–20.45</td><td><span class="badge p0">P0</span></td><td>Pitch deck 5 slides</td><td>PDF deck</td></tr><tr><td>20.45–21.30</td><td><span class="badge p0">P0</span></td><td>Record demo video</td><td>YouTube unlisted draft</td></tr><tr><td>21.30–22.15</td><td><span class="badge p0">P0</span></td><td>Final test + bug fix</td><td>Stable demo flow</td></tr><tr><td>22.15–22.45</td><td><span class="badge p0">P0</span></td><td>Devpost fill + access check</td><td>All links accessible</td></tr><tr><td>22.45–23.00</td><td><span class="badge p0">P0</span></td><td>Submit and stop commits</td><td>Final submission</td></tr></table>
+</section>
+<section id="docs"><h2>16. Deck, Video, README, Devpost</h2>
+<h3>16.1 Pitch deck structure: max 5 slides</h3>
+<table><tr><th>Slide</th><th>Content</th></tr><tr><td>1. Problem</td><td>Websites compete for Google + AI discovery, but owners lack continuous marketing intelligence.</td></tr><tr><td>2. Solution</td><td>LumiLab: Autonomous Website Visibility Agent.</td></tr><tr><td>3. Agent Workflow</td><td>Scan → Adapter → Memory → Reasoning → Priority → Report → Dashboard.</td></tr><tr><td>4. Key Features & Tech Stack</td><td>OpenClaw, Cursor, Node.js, mem9, mock/live adapters, dashboard.</td></tr><tr><td>5. Impact & Roadmap</td><td>Company profile, blog, media, commerce, live GA4/GSC, alerts, auto-fix approval mode.</td></tr></table>
+<h3>16.2 Demo video script: 2 minutes</h3><pre><code>0:00–0:15
+Introduce problem: businesses have websites but do not know what to fix for search and AI discovery.
+
+0:15–0:30
+Introduce LumiLab: autonomous website visibility agent.
+
+0:30–0:55
+Show target website and connector status.
+
+0:55–1:20
+Run the agent: scan, load mock GA4/GSC/commerce data, search memory, score issues.
+
+1:20–1:45
+Show dashboard: top issues, priority score, executive summary, developer action plan.
+
+1:45–2:00
+Close: LumiLab is website-agnostic, connector-ready, and built for continuous growth monitoring.</code></pre>
+<h3>16.3 Devpost fields</h3><table><tr><th>Field</th><th>Content</th></tr><tr><td>Project Name</td><td>LumiLab</td></tr><tr><td>Team Name</td><td>OpenClaw2026_Reyhan or selected name</td></tr><tr><td>GitHub Repo</td><td>OpenClaw2026_Reyhan_LumiLab</td></tr><tr><td>Video</td><td>OpenClaw2026_Reyhan_LumiLab</td></tr><tr><td>Deck</td><td>OpenClaw2026_Reyhan_LumiLab.pdf</td></tr></table>
+</section>
+<section id="risk"><h2>17. Risk & Fallback Plan</h2>
+<table><tr><th>Risk</th><th>Fallback</th><th>Priority</th></tr><tr><td>OpenClaw skill install fails</td><td>Run Node agent by CLI, demo OpenClaw prompt/config as agent layer</td><td><span class="badge p0">P0</span></td></tr><tr><td>mem9 setup fails</td><td>Use local <code>memory/scan_history.json</code> fallback</td><td><span class="badge p0">P0</span></td></tr><tr><td>Website crawler blocked</td><td>Use sample HTML pages stored locally</td><td><span class="badge p0">P0</span></td></tr><tr><td>Dashboard not ready</td><td>Show generated HTML/Markdown report</td><td><span class="badge p0">P0</span></td></tr><tr><td>BYOK assistant fails</td><td>Remove chat, focus on report and agent workflow</td><td><span class="badge p1">P1</span></td></tr><tr><td>Real APIs unavailable</td><td>Use mock adapters and explain connector-ready architecture</td><td><span class="badge p0">P0</span></td></tr></table>
+</section>
+<section id="acceptance"><h2>18. Winning Acceptance Criteria</h2>
+<ul><li><code>npm run scan</code> completes without manual step.</li><li>Crawler extracts real HTML signals from website.</li><li>Mock GA4/GSC/commerce data loads successfully.</li><li>Memory compare works via mem9 or local fallback.</li><li>Priority scoring produces Critical/High/Medium/Low.</li><li>Report JSON and Markdown/HTML are generated automatically.</li><li>Dashboard reads latest report and displays top insight.</li><li>README can reproduce the project.</li><li>Demo video shows the agent workflow, not only UI.</li><li>Deck explicitly maps solution to scoring criteria.</li></ul>
+<div class="callout ok"><strong>LumiLab turns any website into a monitored growth asset by autonomously scanning visibility signals, remembering historical issues, prioritizing business impact, and translating website problems into executive insight and developer-ready actions.</strong></div>
+</section>
+<section id="sources"><h2>19. Sources</h2>
+<ol class="source-list">
+<li>OpenClaw Agenthon 2026 official technical guidelines and scoring rubric, provided by event documents.</li>
+<li>OpenClaw documentation: <a href="https://docs.openclaw.ai/">https://docs.openclaw.ai/</a></li>
+<li>OpenClaw GitHub repository: <a href="https://github.com/openclaw/openclaw">https://github.com/openclaw/openclaw</a></li>
+<li>mem9 docs: <a href="https://mem9.ai/docs/">https://mem9.ai/docs/</a></li>
+<li>mem9 site: <a href="https://mem9.ai/">https://mem9.ai/</a></li>
+<li>Google Analytics Data API Quickstart: <a href="https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart">https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart</a></li>
+<li>Google Search Console Search Analytics API: <a href="https://developers.google.com/webmaster-tools/v1/searchanalytics/query">https://developers.google.com/webmaster-tools/v1/searchanalytics/query</a></li>
+<li>Google Search Console clicks, impressions, position support doc: <a href="https://support.google.com/webmasters/answer/7042828">https://support.google.com/webmasters/answer/7042828</a></li>
+<li>Google Product structured data docs: <a href="https://developers.google.com/search/docs/appearance/structured-data/product">https://developers.google.com/search/docs/appearance/structured-data/product</a></li>
+<li>Google ecommerce structured data docs: <a href="https://developers.google.com/search/docs/specialty/ecommerce/include-structured-data-relevant-to-ecommerce">https://developers.google.com/search/docs/specialty/ecommerce/include-structured-data-relevant-to-ecommerce</a></li>
+<li>WooCommerce REST API authentication docs: <a href="https://developer.woocommerce.com/docs/apis/rest-api/authentication/">https://developer.woocommerce.com/docs/apis/rest-api/authentication/</a></li>
+<li>WooCommerce REST API docs: <a href="https://woocommerce.com/document/woocommerce-rest-api/">https://woocommerce.com/document/woocommerce-rest-api/</a></li>
+<li>Google Indonesia e-Conomy SEA 2024 blog: <a href="https://blog.google/intl/id-id/e-conomy-sea-2024-perekonomian-digital-indonesia-akan-mencapai-gmv-90-miliar-pada-tahun-2024/">https://blog.google/intl/id-id/e-conomy-sea-2024-perekonomian-digital-indonesia-akan-mencapai-gmv-90-miliar-pada-tahun-2024/</a></li>
+<li>Komdigi UMKM digitalization article: <a href="https://www.komdigi.go.id/berita/ekonomi-digital/detail/umkm-indonesia-makin-kuat-program-level-up-2024-siap-dorong-digitalisasi-bisnis">https://www.komdigi.go.id/berita/ekonomi-digital/detail/umkm-indonesia-makin-kuat-program-level-up-2024-siap-dorong-digitalisasi-bisnis</a></li>
+<li>Komdigi 30 million MSME digital adoption press release: <a href="https://www.komdigi.go.id/berita/pengumuman/detail/siaran-pers-no-475-hm-kominfo-08-2024-tentang-tahun-2024-indonesia-targetkan-30-juta-pelaku-umkm-adopsi-teknologi-digital">https://www.komdigi.go.id/berita/pengumuman/detail/siaran-pers-no-475-hm-kominfo-08-2024-tentang-tahun-2024-indonesia-targetkan-30-juta-pelaku-umkm-adopsi-teknologi-digital</a></li>
+</ol>
+<div class="footer">Prepared for LumiLab build sprint, OpenClaw Agenthon 2026. Use this as a practical execution document, not a theoretical product spec.</div>
+</section>
+</div>
+</main>
+</body>
+</html>

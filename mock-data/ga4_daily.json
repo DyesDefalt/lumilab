@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "source": "mock",
+    "connector": "ga4",
+    "label": "MOCK DATA — calibrated to Adkivo GA4 (21 active users / 28d). Replace with live API when credentials are set.",
+    "period": "last_28_days",
+    "property_name": "Adkivo"
+  },
+  "property_id": "MOCK-GA4-ADKIVO",
+  "site": "https://www.adkivo.my.id",
+  "date_range": { "start": "2026-04-17", "end": "2026-05-14" },
+  "totals": {
+    "sessions": 24,
+    "users": 21,
+    "new_users": 20,
+    "pageviews": 68,
+    "bounce_rate": 0.55,
+    "avg_session_duration_sec": 72,
+    "event_count": 123,
+    "key_events": 0,
+    "conversions": 0,
+    "conversion_rate": 0
+  },
+  "pages": [
+    { "path": "/", "sessions": 14, "pageviews": 32, "conversions": 0, "avg_engagement_sec": 65 },
+    { "path": "/guide", "sessions": 5, "pageviews": 18, "conversions": 0, "avg_engagement_sec": 95 },
+    { "path": "/about", "sessions": 3, "pageviews": 8, "conversions": 0, "avg_engagement_sec": 45 },
+    { "path": "/contact", "sessions": 2, "pageviews": 6, "conversions": 0, "avg_engagement_sec": 40 }
+  ],
+  "channels": [
+    { "channel": "Direct", "sessions": 12, "conversions": 0 },
+    { "channel": "Organic Search", "sessions": 4, "conversions": 0 },
+    { "channel": "Referral", "sessions": 5, "conversions": 0 },
+    { "channel": "Social", "sessions": 3, "conversions": 0 }
+  ],
+  "trend_vs_previous_period": {
+    "active_users_change_percent": -30,
+    "new_users_change_percent": -31,
+    "event_count_change_percent": -43
+  }
+}
