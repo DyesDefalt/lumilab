@@ -1,89 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LumiLab Dashboard</title>
-  <link rel="stylesheet" href="/styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LumiLab Agent Dashboard</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#172033;--muted:#667085;--line:#e5e7eb;--brand:#6d5efc;--cyan:#00a3ff;--ok:#067647;--warn:#b54708;--bad:#b42318}*{box-sizing:border-box}body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0}.hero{background:radial-gradient(circle at 10% 0%,#00a3ff44,transparent 25%),linear-gradient(135deg,#0b1020,#111827);color:white;padding:34px}.wrap{max-width:1160px;margin:auto;padding:24px}.muted{color:var(--muted)}.hero .muted{color:#d8def5}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.two{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(16,24,40,.05)}.kpi{font-size:34px;font-weight:800;letter-spacing:-.04em}.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:#fff;font-size:12px;margin:4px 4px 0 0}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}button{border:0;border-radius:12px;background:var(--brand);color:white;padding:10px 14px;font-weight:700;cursor:pointer}button.secondary{background:#eef2ff;color:#3538cd}textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit}pre{white-space:pre-wrap;background:#0b1220;color:#e5e7eb;border-radius:14px;padding:14px;max-height:360px;overflow:auto}.list{padding-left:18px}.list li{margin:8px 0}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}.links a{color:white;text-decoration:none;border:1px solid #ffffff33;border-radius:999px;padding:7px 10px;margin-left:6px}.section{margin-top:16px}@media(max-width:900px){.grid,.two{grid-template-columns:1fr}.topbar{display:block}.links a{display:inline-block;margin:6px 6px 0 0}}
+</style>
 </head>
 <body>
-  <header class="header">
-    <div class="brand">
-      <span class="logo">LumiLab</span>
-      <span class="tagline">Autonomous Website Visibility Agent</span>
+<header class="hero">
+  <div class="topbar wrap">
+    <div>
+      <div class="muted">OpenClaw Agenthon 2026 • Autonomous Website Visibility Agent</div>
+      <h1>LumiLab / Clawdyes</h1>
+      <p class="muted">Scan → Analyze → Remember → Prioritize → Report → Dashboard. Agent-first, dashboard as consumer.</p>
     </div>
-    <div class="header-actions">
-      <span id="cutoff-date" class="cutoff">—</span>
-      <a id="pdf-link" href="/api/report.pdf" class="btn btn-outline" download>Download PDF</a>
+    <div class="links">
+      <a href="/output/adkivo_seo_ai_visibility_report_clean.pdf">PDF Report</a>
+      <a href="/output/tech_handoff.md">Tech Handoff</a>
+      <a href="/docs/HACKATHON_ALIGNMENT.md">Hackathon Evidence</a>
     </div>
-  </header>
-
-  <main class="container">
-    <section id="empty-state" class="empty hidden">
-      <h2>No report yet</h2>
-      <p>Run <code>npm run scan</code> in the lumilab directory to generate your first report.</p>
-    </section>
-
-    <section id="dashboard" class="hidden">
-      <div class="connector-row" id="connectors"></div>
-
-      <div class="scores-grid">
-        <div class="score-card">
-          <span class="score-label">Website Health</span>
-          <span class="score-value" id="score-health">—</span>
-        </div>
-        <div class="score-card">
-          <span class="score-label">SEO Score</span>
-          <span class="score-value" id="score-seo">—</span>
-        </div>
-        <div class="score-card">
-          <span class="score-label">AI Visibility</span>
-          <span class="score-value" id="score-ai">—</span>
-        </div>
-        <div class="score-card accent">
-          <span class="score-label">Overall</span>
-          <span class="score-value" id="score-overall">—</span>
-        </div>
-      </div>
-
-      <section class="panel">
-        <h2>Executive summary</h2>
-        <p id="executive-summary" class="summary-text"></p>
-      </section>
-
-      <div class="two-col">
-        <section class="panel">
-          <h2>Trend cards</h2>
-          <div class="trend-grid" id="trend-cards"></div>
-        </section>
-        <section class="panel">
-          <h2>Daily / weekly comparison</h2>
-          <div id="comparison"></div>
-        </section>
-      </div>
-
-      <section class="panel">
-        <h2>Top 5 priority issues</h2>
-        <ul id="top-issues" class="issue-list"></ul>
-      </section>
-
-      <section class="panel assistant-panel">
-        <h2>AI Assistant <span class="badge">BYOK</span></h2>
-        <p class="hint">Answers use latest_report.json only. API key stays on server.</p>
-        <div class="chat-box">
-          <div id="chat-messages" class="messages"></div>
-          <form id="chat-form" class="chat-form">
-            <input type="text" id="chat-input" placeholder="What should I fix first?" autocomplete="off">
-            <button type="submit" class="btn">Ask</button>
-          </form>
-        </div>
-      </section>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>LumiLab · Read-only monitoring · No automatic website edits</p>
-  </footer>
-  <script src="/app.js"></script>
+  </div>
+</header>
+<main class="wrap">
+  <section class="grid" id="kpis"></section>
+  <section class="two section">
+    <div class="card">
+      <h2>Top priorities</h2>
+      <ol class="list" id="issues"><li>Loading…</li></ol>
+    </div>
+    <div class="card">
+      <h2>Agent status</h2>
+      <div id="status">Loading…</div>
+      <p><button onclick="runScan()">Run autonomous scan</button> <button class="secondary" onclick="loadAll()">Refresh</button></p>
+    </div>
+  </section>
+  <section class="two section">
+    <div class="card">
+      <h2>Ask LumiLab Agent</h2>
+      <p class="muted">Grounded in latest report, tech handoff, capability manifest, and connector data. Not a generic chatbot.</p>
+      <textarea id="q" placeholder="What should I fix first? What changed? What should I tell my developer?"></textarea>
+      <p><button onclick="ask()">Ask agent</button></p>
+      <pre id="answer">Ready.</pre>
+    </div>
+    <div class="card">
+      <h2>Connected skills</h2>
+      <div id="skills">Loading…</div>
+    </div>
+  </section>
+  <section class="card section">
+    <h2>Executive summary</h2>
+    <div id="summary" class="muted">Loading…</div>
+  </section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+async function j(url, opts){ const r = await fetch(url, opts); if(!r.ok) throw new Error(await r.text()); return r.json(); }
+function scoreCard(name, value, note='') { return `<div class="card"><div class="muted">${name}</div><div class="kpi">${value ?? '—'}</div><div class="muted">${note}</div></div>`; }
+async function loadAll(){
+  try{
+    const [report,status,caps] = await Promise.all([j('/api/latest-report'), j('/api/agent/status'), j('/api/agent/capabilities')]);
+    const scores = report.scores || report.score || {};
+    $('kpis').innerHTML = scoreCard('Website Health', scores.websiteHealth ?? scores.overall ?? '—') + scoreCard('SEO Health', scores.seo ?? '—') + scoreCard('AI / GEO Visibility', scores.aiVisibility ?? scores.ai ?? '—') + scoreCard('Business Opportunity', scores.businessOpportunity ?? '—');
+    const issues = report.priorityIssues || report.issues || [];
+    $('issues').innerHTML = issues.slice(0,5).map(i => `<li><b>${i.priority || i.severity || 'Issue'}</b> — ${i.title || i.issue || i.message || JSON.stringify(i).slice(0,120)}</li>`).join('') || '<li>No priority issues found.</li>';
+    $('summary').innerHTML = (report.executiveSummary || report.summary || 'No summary available.').toString().replaceAll('\n','<br>');
+    $('status').innerHTML = `<p><b>Target:</b> ${status.targetUrl || report.targetUrl || '—'}</p><p><b>Updated:</b> ${status.files?.find(f=>f.path.includes('latest_report.json'))?.updatedAt || '—'}</p>` + status.files.map(f => `<span class="pill ${f.exists?'ok':'bad'}">${f.exists?'✓':'×'} ${f.path}</span>`).join('');
+    $('skills').innerHTML = caps.skills.map(s => `<span class="pill">${s.name}</span><p class="muted">${s.use}</p>`).join('') + `<hr><p><b>Guardrails:</b></p>` + caps.guardrails.map(g => `<span class="pill">${g}</span>`).join('');
+  }catch(e){ $('status').innerHTML = `<span class="bad">${e.message}</span>`; }
+}
+async function ask(){
+  $('answer').textContent = 'Thinking…';
+  try { const r = await j('/api/assistant',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:$('q').value})}); $('answer').textContent = r.answer || 'No answer.'; }
+  catch(e){ $('answer').textContent = e.message; }
+}
+async function runScan(){
+  $('status').innerHTML = 'Running scan…';
+  try { await j('/api/agent/run-scan',{method:'POST'}); await loadAll(); }
+  catch(e){ $('status').innerHTML = `<span class="bad">${e.message}</span>`; }
+}
+loadAll();
+</script>
 </body>
 </html>

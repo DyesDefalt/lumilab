@@ -1,31 +1,24 @@
 {
-  "name": "lumilab",
+  "name": "lumilab-agent",
   "version": "0.1.0",
-  "description": "LumiLab — Autonomous Website Visibility Agent",
+  "description": "Agent-first website visibility monitoring loop for websites, currently configured for Adkivo",
   "type": "module",
-  "main": "scripts/runScan.js",
   "scripts": {
     "scan": "node scripts/runScan.js",
-    "dashboard": "node dashboard/server.js",
-    "daily-report": "node scripts/runDailyCron.js",
-    "start": "node dashboard/server.js"
+    "openclaw:daily": "node scripts/openclawDailyRun.js",
+    "dashboard": "node dashboard/server.js"
   },
-  "engines": {
-    "node": ">=20.0.0"
-  },
-  "keywords": [
-    "seo",
-    "ai-visibility",
-    "website-monitoring",
-    "agent"
-  ],
-  "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "marked": "^15.0.6",
-    "node-cron": "^3.0.3",
-    "puppeteer": "^24.2.0"
+    "@mozilla/readability": "latest",
+    "cheerio": "latest",
+    "date-fns": "latest",
+    "date-fns-tz": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "marked": "^18.0.3",
+    "openai": "latest",
+    "pdfkit": "^0.18.0",
+    "puppeteer": "latest",
+    "zod": "latest"
   }
 }
